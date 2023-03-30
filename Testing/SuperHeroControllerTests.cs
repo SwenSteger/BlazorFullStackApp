@@ -47,8 +47,6 @@ public class SuperHeroControllerTests
 	{
 		// Arrange
 		var dbHeroes = await _context.SuperHeroes.ToListAsync();
-		// var hero1 = new SuperHero { Id = 1, FirstName = "Peter", LastName = "Parker", HeroName = "Spiderman", ComicId = 1 };
-		// var hero2 = new SuperHero { Id = 2, FirstName = "Bruce", LastName = "Wayne", HeroName = "Batman", ComicId = 2 };
 
 		// Act
 		var result = await _controller.GetSuperHeroes();
@@ -62,10 +60,6 @@ public class SuperHeroControllerTests
 		Assert.AreEqual(dbHeroes.Count, heroes.Count);
 		for (int i = 0; i < heroes.Count; i++)
 			Assert.AreEqual(dbHeroes[i], heroes[i]);
-
-		// Assert.AreEqual(2, heroes.Count);
-		// Assert.AreEqual(hero1.FirstName, result[0].FirstName);
-		// Assert.AreEqual(hero2.FirstName, result[1].FirstName);
 	}
 
 	[Test]
@@ -88,10 +82,6 @@ public class SuperHeroControllerTests
 		Assert.AreEqual(dbComics.Count, comics.Count);
 		for (int i = 0; i < comics.Count; i++)
 			Assert.AreEqual(dbComics[i], comics[i]);
-		
-		// Assert.AreEqual(2, comics.Count);
-		// Assert.AreEqual(comic1.Name, comics[0].Name);
-		// Assert.AreEqual(comic2.Name, comics[1].Name);
 	}
 
 	[Test]
@@ -99,7 +89,6 @@ public class SuperHeroControllerTests
 	{
 		// Arrange
 		var hero = await _context.SuperHeroes.FirstOrDefaultAsync(x => x.Id == 1);
-		// var hero1 = new SuperHero { Id = 1, FirstName = "Peter", LastName = "Parker", HeroName = "Spiderman", ComicId = 1 };
 
 		// Act
 		var result = await _controller.GetSuperHero(1);
@@ -111,7 +100,6 @@ public class SuperHeroControllerTests
 
 		Assert.IsNotNull(dbHero);
 		Assert.AreEqual(hero.FirstName, dbHero.FirstName);
-		// Assert.AreEqual(hero1.FirstName, result[0].FirstName);
 	}
 
 	[Test]
@@ -149,7 +137,6 @@ public class SuperHeroControllerTests
 	public async Task UpdateSuperHero_WithValidId_ReturnsOkResultWithListOfSuperHeroes()
 	{
 		// Arrange
-		// var hero = new SuperHero { Id = 1, FirstName = "Peter", LastName = "Parker", HeroName = "Spiderman", ComicId = 1 };
 		var hero = await _context.SuperHeroes.FirstOrDefaultAsync(x => x.Id == 1);
 
 		// Act
